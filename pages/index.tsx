@@ -1,12 +1,8 @@
-import { NewRelease, Profile, Song } from "@joshtsch/legos/dist/Cropsin";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
-import { useState } from "react";
-import { FaMusic, FaWallet } from "react-icons/fa";
 import { AppHeader } from "../components";
 
-const Home: NextPage = () => {
+const Home: NextPage = ({ FACEBOOK_APP_ID }) => {
   return (
     <div>
       <Head>
@@ -24,10 +20,27 @@ const Home: NextPage = () => {
           padding: "0 40px",
         }}
       >
-        <AppHeader />
+        <AppHeader facebookAppId={FACEBOOK_APP_ID} />
       </main>
     </div>
   );
 };
+
+export async function getServerSideProps() {
+  // const res = await fetch("http://localhost:3001/auth/facebook", {
+  //   headers: {
+  //     Accept: "application/json",
+  //     "Content-Type": "application/json",
+  //   },
+  //   method: "POST",
+  //   body: JSON.stringify({
+  //     access_token: `EAAER96vfC24BABbmwBUpuvZBarZAgo3kLouCApr6z6SliYS3jUN2WIiVJvsjA6VKiTZBVzdYzVR41GuvTtRMdFYlPZAojzHFELLm1NDGl74DBLX0ZA5jNZAg98lipg0MkJwIAsJEhqZAZBSBlcvWTOJYSMkGPCQLcLuVgFxYpWY3EGmopjGKXRtnH4er57osGXzEQZBa5CmIUE4OxxH2B0ZCezSak9B9AFEDc72o0bAX7FsfZB1uHYgytSL`,
+  //   }),
+  // });
+
+  return {
+    props: { FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID },
+  };
+}
 
 export default Home;
