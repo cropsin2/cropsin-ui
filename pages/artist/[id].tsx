@@ -8,7 +8,9 @@ import { FaMusic, FaUpload, FaWallet } from "react-icons/fa";
 import { AppHeader } from "../../components";
 import { users } from "../../data/users";
 
-const ArtistPage: NextPage = ({ FACEBOOK_APP_ID }) => {
+const ArtistPage: NextPage<{ FACEBOOK_APP_ID: string }> = ({
+  FACEBOOK_APP_ID,
+}) => {
   const [section, setSection] = useState<"songs" | "nfts">("songs");
   const router = useRouter();
   const { id } = router.query;

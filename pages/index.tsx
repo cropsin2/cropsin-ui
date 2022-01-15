@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { AppHeader } from "../components";
 
-const Home: NextPage = ({ FACEBOOK_APP_ID }) => {
+const Home: NextPage<{ FACEBOOK_APP_ID: string }> = ({ FACEBOOK_APP_ID }) => {
   return (
     <div>
       <Head>
