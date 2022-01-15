@@ -47,14 +47,20 @@ function Avatar({ facebookAppId }: AvatarProps) {
 
   if (!loggedIn) {
     return (
-      <>
+      <div style={{ display: "flex" }}>
         <FacebookLogin
           appId={facebookAppId}
           fields="name,email,picture"
           callback={(response: any) => console.log(response)}
           render={(renderProps: any) => (
-            <Button active size="md" onClick={renderProps.onClick}>
-              <FaFacebook /> Login
+            <Button
+              active
+              size="md"
+              onClick={renderProps.onClick}
+              style={{ marginRight: "10px" }}
+            >
+              <FaFacebook />
+              <p style={{ marginLeft: "10px" }}>Login</p>
             </Button>
           )}
         />
@@ -65,9 +71,10 @@ function Avatar({ facebookAppId }: AvatarProps) {
             connectWalletAction();
           }}
         >
-          <FaEthereum /> Connect
+          <FaEthereum />
+          <p style={{ marginLeft: "10px" }}>Connect</p>
         </Button>
-      </>
+      </div>
     );
   }
 
