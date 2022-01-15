@@ -1,11 +1,17 @@
+import { Button, Header } from "@joshtsch/legos/dist/Cropsin";
 import { HeaderLink } from "@joshtsch/legos/dist/Cropsin/Header/HeaderLink";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
-import { FaBell, FaEthereum, FaHome, FaSearch, FaStar } from "react-icons/fa";
-import { Button } from "../componentsProp/Button";
-import { Header } from "../componentsProp/Header";
+import {
+  FaBell,
+  FaEthereum,
+  FaFacebook,
+  FaHome,
+  FaSearch,
+  FaStar,
+} from "react-icons/fa";
 
 interface AppHeaderProps {
   facebookAppId: string;
@@ -48,10 +54,19 @@ function Avatar({ facebookAppId }: AvatarProps) {
           callback={(response: any) => console.log(response)}
           render={(renderProps: any) => (
             <Button active size="md" onClick={renderProps.onClick}>
-              Connect
+              <FaFacebook /> Login
             </Button>
           )}
         />
+        <Button
+          active
+          size="md"
+          onClick={() => {
+            connectWalletAction();
+          }}
+        >
+          <FaEthereum /> Connect
+        </Button>
       </>
     );
   }

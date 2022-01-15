@@ -8,7 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@joshtsch/legos": "^1.0.11",
+    "@joshtsch/legos": "^1.0.12",
     "ethers": "^5.5.3",
     "next": "12.0.8",
     "react": "17.0.2",
