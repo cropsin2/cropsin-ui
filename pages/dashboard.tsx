@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { AppHeader } from "../components";
 
-const Dashboard: NextPage = () => {
+const Dashboard: NextPage = ({ FACEBOOK_APP_ID }) => {
   return (
     <div>
       <Head>
@@ -18,10 +18,16 @@ const Dashboard: NextPage = () => {
           padding: "0 40px",
         }}
       >
-        <AppHeader />
+        <AppHeader facebookAppId={FACEBOOK_APP_ID} />
       </main>
     </div>
   );
 };
+
+export async function getServerSideProps() {
+  return {
+    props: { FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID },
+  };
+}
 
 export default Dashboard;

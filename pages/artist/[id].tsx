@@ -8,7 +8,7 @@ import { FaMusic, FaUpload, FaWallet } from "react-icons/fa";
 import { AppHeader } from "../../components";
 import { users } from "../../data/users";
 
-const ArtistPage: NextPage = () => {
+const ArtistPage: NextPage = ({ FACEBOOK_APP_ID }) => {
   const [section, setSection] = useState<"songs" | "nfts">("songs");
   const router = useRouter();
   const { id } = router.query;
@@ -34,7 +34,7 @@ const ArtistPage: NextPage = () => {
           padding: "0 40px",
         }}
       >
-        <AppHeader />
+        <AppHeader facebookAppId={FACEBOOK_APP_ID} />
         <div
           style={{
             height: "240px",
@@ -240,5 +240,11 @@ const ArtistPage: NextPage = () => {
     </div>
   );
 };
+
+export async function getServerSideProps() {
+  return {
+    props: { FACEBOOK_APP_ID: process.env.FACEBOOK_APP_ID },
+  };
+}
 
 export default ArtistPage;
