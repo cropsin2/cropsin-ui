@@ -1,6 +1,11 @@
 import type { AppProps } from "next/app";
+import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { useCheckIfWalletIsConnected } from "../components/hooks";
+import {
+  CurrentAccount,
+  EthereumWalletContext,
+  Loading,
+} from "../components/context";
 import "../styles/globals.css";
 
 declare global {
@@ -12,12 +17,25 @@ declare global {
 const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
-  useCheckIfWalletIsConnected();
+  const [currentAccount, setCurrentAccount] = useState<CurrentAccount>(null);
+  const [loading, setLoading] = useState<Loading>(false);
+  const [fbUser, setFbUser] = useState<any>(false);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Component {...pageProps} />
-    </QueryClientProvider>
+    <EthereumWalletContext.Provider
+      value={{
+        currentAccount,
+        setCurrentAccount,
+        loading,
+        setLoading,
+        fbUser,
+        setFbUser,
+      }}
+    >
+      <QueryClientProvider client={queryClient}>
+        <Component {...pageProps} />
+      </QueryClientProvider>
+    </EthereumWalletContext.Provider>
   );
 }
 

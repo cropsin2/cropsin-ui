@@ -1,21 +1,29 @@
+import { BadgeVariant } from "@joshtsch/legos/dist/Cropsin";
+
 export interface User {
   name: string;
   avatar: string;
-  badges: "Electronic"[];
+  badges: BadgeVariant[];
   songs: string[];
 }
 
-export const users: { [key: number]: User } = {
-  "0": {
-    name: "joshtsch.eth",
+export const users: { [key: string]: User } = {
+  "yeo-mase": {
+    name: "Yeo Mase",
     avatar: "/assets/avatar.png",
     badges: ["Electronic", "Electronic"],
     songs: ["Spirit of the  soul"],
   },
-  "1": {
-    name: "joshtsch.eth",
+  "xan-griffin": {
+    name: "Xan Griffin",
     avatar: "/assets/avatar2.png",
     badges: ["Electronic"],
+    songs: ["Spirit of the  soul"],
+  },
+  "kid-quill": {
+    name: "Kid Quill",
+    avatar: "/assets/avatar2.png",
+    badges: ["Electronic", "Chill"],
     songs: ["Spirit of the  soul"],
   },
 };

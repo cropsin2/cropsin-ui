@@ -20,3 +20,7 @@ p {
 * {
   box-sizing: border-box;
 }
+
+input {
+  box-shadow: none;
+}

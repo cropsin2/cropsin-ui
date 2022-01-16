@@ -628,10 +628,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@joshtsch/legos@^1.0.12":
-  version "1.0.12"
-  resolved "https://gitlab.com/api/v4/projects/29078464/packages/npm/@joshtsch/legos/-/@joshtsch/legos-1.0.12.tgz#f3895683cad594f88af6a86db861bd87efd6e2cb"
-  integrity sha1-84lWg8rVlPiK9qhtuGG9h+/W4ss=
+"@joshtsch/legos@^1.0.14":
+  version "1.0.14"
+  resolved "https://gitlab.com/api/v4/projects/29078464/packages/npm/@joshtsch/legos/-/@joshtsch/legos-1.0.14.tgz#2b8635d3b8b36a046984c475e60763ec39a42949"
+  integrity sha1-K4Y107izagRphMR15gdj7DmkKUk=
   dependencies:
     classnames "^2.3.1"
     react "^17.0.2"

@@ -1,10 +1,24 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useEffect, useState } from "react";
 import { AppHeader } from "../components";
+import { useCheckIfWalletIsConnected } from "../components/hooks";
+import { songs } from "../data/songs";
 
 const Dashboard: NextPage<{ FACEBOOK_APP_ID: string }> = ({
   FACEBOOK_APP_ID,
 }) => {
+  useCheckIfWalletIsConnected();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredSongs, setFilteredSongs] = useState(songs);
+
+  useEffect(() => {
+    const results = songs.filter((song) =>
+      song.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredSongs(results);
+  }, [searchTerm]);
+
   return (
     <div>
       <Head>
@@ -20,7 +34,10 @@ const Dashboard: NextPage<{ FACEBOOK_APP_ID: string }> = ({
           padding: "0 40px",
         }}
       >
-        <AppHeader facebookAppId={FACEBOOK_APP_ID} />
+        <AppHeader
+          facebookAppId={FACEBOOK_APP_ID}
+          setSearchTerm={setSearchTerm}
+        />
       </main>
     </div>
   );

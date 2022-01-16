@@ -1,8 +1,44 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useEffect, useState } from "react";
 import { AppHeader } from "../components";
+import { SongList } from "../components/SongList";
+import { useCheckIfWalletIsConnected } from "../components/hooks";
+import { songs } from "../data/songs";
 
 const Home: NextPage<{ FACEBOOK_APP_ID: string }> = ({ FACEBOOK_APP_ID }) => {
+  useCheckIfWalletIsConnected();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredSongs, setFilteredSongs] = useState(songs);
+
+  useEffect(() => {
+    const results = songs.filter((song) =>
+      song.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredSongs(results);
+  }, [searchTerm]);
+
+  // const { isLoading, error, data, isFetching } = useQuery("repoData", () =>
+  //   fetch("https://localhost/backend-crospin/auth/facebook", {
+  //     headers: {
+  //       // Accept: "application/json",
+  //       // "Content-Type": "application/json",
+  //       // Authorization: `Bearer ${"EAAER96vfC24BAOM9drxfZCTjpx6JJA2IwgFAlTvtkloq4PuLE8ia3HgWS538hkVODZC4CwvOflBw0WLbmME7W7eMYVg8GDfUsFOnY0vAvAZArYivO5WlwMZChDsY4AQqxo0uPM2W31i0iaUqZBjp082p64vHRAxQmNI36oRapVU7M2ZAXEooMsaKZA1FEZAC1x1OcCGuZBYvaz4zgAPUbVbTQVAuGDHGDekUZD"}`,
+  //     },
+  //     method: "POST",
+  //     body: JSON.stringify({
+  //       access_token:
+  //         "EAAER96vfC24BAOM9drxfZCTjpx6JJA2IwgFAlTvtkloq4PuLE8ia3HgWS538hkVODZC4CwvOflBw0WLbmME7W7eMYVg8GDfUsFOnY0vAvAZArYivO5WlwMZChDsY4AQqxo0uPM2W31i0iaUqZBjp082p64vHRAxQmNI36oRapVU7M2ZAXEooMsaKZA1FEZAC1x1OcCGuZBYvaz4zgAPUbVbTQVAuGDHGDekUZD",
+  //     }),
+  //   }).then((res) =>
+  //     console.log("HEY", res, {
+  //       // Accept: "application/json",
+  //       // "Content-Type": "application/json",
+  //       Authorization: `Bearer ${"EAAER96vfC24BAOM9drxfZCTjpx6JJA2IwgFAlTvtkloq4PuLE8ia3HgWS538hkVODZC4CwvOflBw0WLbmME7W7eMYVg8GDfUsFOnY0vAvAZArYivO5WlwMZChDsY4AQqxo0uPM2W31i0iaUqZBjp082p64vHRAxQmNI36oRapVU7M2ZAXEooMsaKZA1FEZAC1x1OcCGuZBYvaz4zgAPUbVbTQVAuGDHGDekUZD"}`,
+  //     })
+  //   )
+  // );
+
   return (
     <div>
       <Head>
@@ -20,7 +56,11 @@ const Home: NextPage<{ FACEBOOK_APP_ID: string }> = ({ FACEBOOK_APP_ID }) => {
           padding: "0 40px",
         }}
       >
-        <AppHeader facebookAppId={FACEBOOK_APP_ID} />
+        <AppHeader
+          facebookAppId={FACEBOOK_APP_ID}
+          setSearchTerm={setSearchTerm}
+        />
+        <SongList songs={filteredSongs} />
       </main>
     </div>
   );

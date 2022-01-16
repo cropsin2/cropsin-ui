@@ -8,6 +8,8 @@ export type SetLoading = Dispatch<SetStateAction<Loading>>;
 interface EthereumWalletContextType {
   currentAccount: CurrentAccount;
   setCurrentAccount: SetCurrentAccountAction;
+  fbUser: any;
+  setFbUser: Dispatch<SetStateAction<any>>;
   loading: Loading;
   setLoading: SetLoading;
 }
@@ -17,4 +19,6 @@ export const EthereumWalletContext = createContext<EthereumWalletContextType>({
   setCurrentAccount: () => null,
   loading: false,
   setLoading: () => null,
+  fbUser: {},
+  setFbUser: () => null,
 });
