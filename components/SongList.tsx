@@ -1,3 +1,4 @@
+import { replaceAll } from "@joshtsch/legos";
 import { Song } from "@joshtsch/legos/dist/Cropsin";
 import Image from "next/image";
 import Link from "next/link";
@@ -24,9 +25,11 @@ export function SongList({ songs }: SongListProps) {
             <Song
               artist={
                 <Link
-                  href={`/artists/${song.artist
-                    .replaceAll(" ", "-")
-                    .toLowerCase()}`}
+                  href={`/artists/${replaceAll(
+                    song.artist,
+                    " ",
+                    "-"
+                  ).toLowerCase()}`}
                 >
                   <a>
                     <p

@@ -1,4 +1,4 @@
-import { Button, NFT, Profile, Song } from "@joshtsch/legos";
+import { Button, NFT, Profile, Song, replaceAll } from "@joshtsch/legos";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
@@ -210,9 +210,11 @@ const ArtistPage: NextPage<{ FACEBOOK_APP_ID: string }> = ({
                           <Song
                             artist={
                               <Link
-                                href={`/artists/${song.artist
-                                  .replaceAll(" ", "-")
-                                  .toLowerCase()}`}
+                                href={`/artists/${replaceAll(
+                                  song.artist,
+                                  " ",
+                                  "-"
+                                ).toLowerCase()}`}
                               >
                                 <a>
                                   <p
