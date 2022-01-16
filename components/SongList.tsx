@@ -1,13 +1,14 @@
 import { replaceAll } from "@joshtsch/legos";
-import { Song } from "@joshtsch/legos/dist/Cropsin";
 import Image from "next/image";
 import Link from "next/link";
+import { Song } from "./Song";
 
 interface SongListProps {
   songs: any[];
+  creator?: boolean;
 }
 
-export function SongList({ songs }: SongListProps) {
+export function SongList({ songs, creator }: SongListProps) {
   return (
     <div
       className="song-list"
@@ -23,9 +24,10 @@ export function SongList({ songs }: SongListProps) {
           <h2>{`All Songs (${songs.length})`}</h2>
           {songs.map((song, idx) => (
             <Song
+              creator={creator}
               artist={
                 <Link
-                  href={`/artists/${replaceAll(
+                  href={`/creators/${replaceAll(
                     song.artist,
                     " ",
                     "-"

@@ -12,6 +12,8 @@ interface EthereumWalletContextType {
   setFbUser: Dispatch<SetStateAction<any>>;
   loading: Loading;
   setLoading: SetLoading;
+  tokens: any;
+  setTokens: any;
 }
 
 export const EthereumWalletContext = createContext<EthereumWalletContextType>({
@@ -21,4 +23,6 @@ export const EthereumWalletContext = createContext<EthereumWalletContextType>({
   setLoading: () => null,
   fbUser: {},
   setFbUser: () => null,
+  tokens: {},
+  setTokens: () => null,
 });

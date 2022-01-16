@@ -206,6 +206,7 @@ const ArtistPage: NextPage<{ FACEBOOK_APP_ID: string }> = ({
                     }}
                   >
                     <SongList
+                      creator
                       songs={songs.filter(
                         (song) => song.artist == users[userId].name
                       )}

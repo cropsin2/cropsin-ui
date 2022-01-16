@@ -11,7 +11,7 @@ export const users: { [key: string]: User } = {
   "yeo-mase": {
     name: "Yeo Mase",
     avatar: "/assets/avatar.png",
-    badges: ["Electronic", "Electronic"],
+    badges: ["Chill", "Electronic"],
     songs: ["Spirit of the  soul"],
   },
   "xan-griffin": {

@@ -60,7 +60,7 @@ const Home: NextPage<{ FACEBOOK_APP_ID: string }> = ({ FACEBOOK_APP_ID }) => {
           facebookAppId={FACEBOOK_APP_ID}
           setSearchTerm={setSearchTerm}
         />
-        <SongList songs={filteredSongs} />
+        <SongList songs={filteredSongs} creator />
       </main>
     </div>
   );
