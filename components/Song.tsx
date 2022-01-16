@@ -1,6 +1,6 @@
+import { Button } from "@joshtsch/legos";
 import React, { ReactNode, useState } from "react";
 import { FaPlay, FaPlus, FaWallet } from "react-icons/fa";
-import { Button } from "../componentsProp/Button";
 import { askContractToMintNft, sellNft } from "./hooks/useMint";
 
 interface SongProps {
